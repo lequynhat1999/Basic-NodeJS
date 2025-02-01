@@ -8,6 +8,10 @@ const { engine } = require('express-handlebars');
 const route = require('./routes/index');
 route(app);
 
+// connect database
+const database = require('./config/database/index');
+database.connectMongoDB();
+
 // Template Engine
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
