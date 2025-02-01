@@ -4,6 +4,10 @@ const app = express();
 const PORT = 6868;
 const { engine } = require('express-handlebars');
 
+// init routes
+const route = require('./routes/index');
+route(app);
+
 // Template Engine
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
@@ -14,6 +18,10 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.get('/', (req, res) => {
    res.render('home');
+})
+
+app.get('/search', (req, res) => {
+    res.render('search');
 })
 
 app.listen(PORT, () => {
